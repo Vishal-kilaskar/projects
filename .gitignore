@@ -15,3 +15,5 @@ venv
 .idea
 .gitignore
 /static
+/listings/migrations
+/realtors/migrations
