@@ -70,7 +70,7 @@
                   <i class="fas fa-clock"></i> {{listing.list_date | timesince }}</div>
               </div>
               <hr>
-              <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
+              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
             </div>
           </div>
         </div>
@@ -85,23 +85,40 @@
 
       <div class="row">
         <div class="col-md-12">
+          {% if listings.has_other_pages %}
           <ul class="pagination">
+            {% if listings.has_previous %}
+            <li class="page-item">
+              <a href="?page= {{listings.previous_page_number}}" class="page-link">&laquo;</a>
+            </li>
+            {% else %}
             <li class="page-item disabled">
-              <a class="page-link" href="#">&laquo;</a>
+              <a class="page-link">&laquo;</a>
             </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
+            {% endif %}
+            {% for page_count in listings.paginator.page_range %}
+                {% if listings.number == page_count %}
+                  <li class="page-item active">
+                    <a class="page-link">{{ page_count }}</a>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a href="?page={{page_count}}" class="page-link">{{page_count}}</a>
+                  </li>
+                {% endif %}
+            {% endfor %}
+            {% if listings.has_next %}
             <li class="page-item">
-              <a class="page-link" href="#">2</a>
+              <a href="?page= {{listings.next_page_number}}" class="page-link">&raquo;</a>
             </li>
-            <li class="page-item">
-              <a class="page-link" href="#">3</a>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link">&raquo;</a>
             </li>
-            <li class="page-item">
-              <a class="page-link" href="#">&raquo;</a>
-            </li>
+            {% endif %}
+
           </ul>
+          {% endif %}
         </div>
       </div>
     </div>
