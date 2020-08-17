@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <!-- lightbox -->
   <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
-    <title>vishal-realestate</title>
+    <title>
+        vishal-realestate {% block title %} {% endblock title %}
+    </title>
 </head>
 <body>
 {% include 'partials/_topbar.html' %}
