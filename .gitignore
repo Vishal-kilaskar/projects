@@ -18,3 +18,4 @@ venv
 /static
 /listings/migrations
 /realtors/migrations
+/contacts/migrations
