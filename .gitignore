@@ -12,8 +12,7 @@ db.sqlite3
 db.sqlite3-journal
 /media
 venv
-.idea
-/.idea
+*.idea
 .gitignore
 /static
 /listings/migrations
